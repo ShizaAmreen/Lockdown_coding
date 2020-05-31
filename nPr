@@ -1,0 +1,41 @@
+import java.lang.*;
+import java.io.*;
+class GFG
+ {
+    public static void input_split(int []array,BufferedReader br) throws IOException{
+		int i=0;
+		String[] line=br.readLine().trim().split(" ");
+		while(i<array.length)
+			array[i]=Integer.parseInt(line[i++]);}
+	static StringTokenizer st;
+	public static String next(BufferedReader br)throws IOException{
+		if(st!=null && st.hasMoreTokens())
+			return st.nextToken();
+			while(true){
+				st=new StringTokenizer(br.readLine().trim());
+				if(st.hasMoreTokens())
+					return st.nextToken();
+		}	
+	}
+	public static void main (String[] args) throws IOException{
+        BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+
+        int t=Integer.parseInt(next(br));
+        int n,k;
+        while(t-->0){
+            n=Integer.parseInt(next(br));
+            k=Integer.parseInt(next(br));
+            
+            System.out.println(nPr((long)n,(long)k));
+        }
+    }
+    public static long nPr(long n, long k){
+        long z=n-k, den=1, c=1;
+        for(int i=2;i<=n;i++){
+            c*=i;
+            if(i==z)
+                den=c;
+        }
+        return c/den;
+    }
+}
